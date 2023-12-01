@@ -1,0 +1,28 @@
+import re
+#Я знаю что можно короче и лучше, но пока у меня не хватает знаний...
+def main (mai):
+    y = str(mai)
+    pattern = r"(\d+|[+\-*/])"
+    spis = re.split(pattern, y)
+    spis = [x for x in spis if x]
+    if len(spis) > 3:
+        raise ValueError("Слишком много значений, я не справлюсь...")
+    a = int(spis[0])
+    b = int(spis[2])
+    z = spis[1]
+    if a >= 1 and a <= 10 and b >= 1 and b <= 10:
+        if z == '+':
+            mai = a + b
+        elif z == '-':
+            mai = a - b
+        elif z == '/':
+            mai = a // b
+        elif z == '*':
+            mai = a * b
+        else:
+            raise ValueError('Некорректная арифметическая операция.')
+    else:
+        raise ValueError("Слишком большие числа...")
+    print(mai)
+mai= input('Введите арифметическое дуйствие: ')
+main(mai)
